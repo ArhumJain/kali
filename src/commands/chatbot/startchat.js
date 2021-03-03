@@ -15,7 +15,12 @@ module.exports = {
         if(!chatStarted){
             message.channel.send(":gear: Starting chat...");
             browser = await puppeteer.launch();
-            page = await browser.newPage();
+            page = await browser.newPage({
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox'
+                ]
+            });
             await page.setViewport({
                 width: 1280,
                 height: 720
