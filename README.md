@@ -13,7 +13,7 @@ Currently implementing chatbot functionality
         PREFIX=!
         ```
         - Or you can set up environment variables in the same way if your hosting the bot on a server (I use [Heroku](https://www.heroku.com/)). Otherwise, if your service doesnt support built in environment variables or you are hosting on a personal machine, you **MUST** set up `.env`.
-    - The bot uses MongoDB so you must create a MongoDB collection (with a user that uses password authentication) yourself and use the application string provided by MongoDB in `src/mongo.js`. Use this [video](https://www.youtube.com/watch?v=SyWdNBbzTIA&t=144s) to find out how to set up a Mongo Data Base and get your connection string.
+    - The bot uses MongoDB so you must create a MongoDB collection (with a user that uses password authentication) yourself and use the application string provided by MongoDB in `src/mongo.js`. Use this [video](https://www.youtube.com/watch?v=SyWdNBbzTIA&t) to find out how to set up a Mongo Data Base and get your connection string.
         - In `mongo.js` replace the string assigned to `mongoPath with your connection string
             ```
             const mongoPath = "mongodb+srv://<user>:<password>@cluster0.jx4hq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
