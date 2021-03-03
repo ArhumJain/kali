@@ -29,7 +29,7 @@ module.exports = {
                 return responses;
             }, ".pb-chat-bubble pb-chat-bubble__bot");
             console.log(stuff);
-            await page.screenshot({path: 'kalichat.png'});
+            // await page.screenshot({path: 'kalichat.png'});
             // await page.waitForXPath("");
             // await page.screenshot({path: 'kukichat.png'});
             // isChatStarted = false;
