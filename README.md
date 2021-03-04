@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Implemented chatbot functionality
-- Patching chatbot bug where you can keep calling the "endchat" command even after the session has been closed
+Chat bot has been patched and is now fully functional!
+- Implementing code compiler
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)

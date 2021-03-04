@@ -53,3 +53,6 @@ module.exports.getPage = () =>{
 module.exports.getChatStarted = () =>{
     return chatStarted;
 }
+module.exports.setChatStarted = (bool) =>{
+    chatStarted = bool;
+}
