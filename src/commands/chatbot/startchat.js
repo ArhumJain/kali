@@ -25,13 +25,16 @@ module.exports = {
                 width: 1280,
                 height: 720
             })
-            await page.goto('https://chat.kuki.ai/');
-            await page.click("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
-            await page.waitForSelector("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
-            await page.click("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
-            await page.waitForSelector("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
-            await page.click("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
-            await page.waitForXPath("//*[@id='main-input']/input");
+            // await page.goto('https://www.pandorabots.com/mitsuku/');
+            // await page.click("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
+            // await page.waitForSelector("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
+            // await page.click("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
+            // await page.waitForSelector("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
+            // await page.click("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
+            // await page.waitForXPath("//*[@id='main-input']/input");
+            await page.goto("https://www.pandorabots.com/mitsuku/");
+            await page.click("#pb-widget > div > div > button");
+            await page.waitForSelector("#pb-widget-input-field");
             chatStarted = true;
             message.channel.send("Chat started!");
         }

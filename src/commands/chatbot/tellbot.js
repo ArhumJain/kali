@@ -17,23 +17,11 @@ module.exports = {
         console.log(messageToSendToBot);
         if(isChatStarted)
         {
-            message.channel.send("You sent Kali the message: " + messageToSendToBot);
-            let listOfBotResponses;
-            await page.type('#main-input > input', messageToSendToBot);
-            await page.keyboard.press('Enter');
-            const stuff = await page.evaluate((sel) => {
-                let elements = Array.from(document.querySelectorAll(sel));
-                let responses = elements.map(element => {
-                    return element.innerText;
-                })
-                return responses;
-            }, ".pb-chat-bubble pb-chat-bubble__bot");
-            console.log(stuff);
-            // await page.screenshot({path: 'kalichat.png'});
-            // await page.waitForXPath("");
-            // await page.screenshot({path: 'kukichat.png'});
-            // isChatStarted = false;
-            // browser.close();
+            await page.type('#pb-widget-input-field', messageToSendToBot);
+            await page.keyboard.press('Enter')
+            await page.screenshot({path: 'kalichat.png'});
+            const listOfBotResponses = await page.$$eval('.pb-message > div > div', responses => responses.map(response => response.innerText));
+            message.channel.send(listOfBotResponses[listOfBotResponses.length - 1]);
         }
         else{
             message.channel.send(`A chat session has not been started. Use \`${prefix}startchat\` or \`${prefix}sc\` to get started!`)

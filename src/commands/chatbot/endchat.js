@@ -14,9 +14,11 @@ module.exports = {
         let isChatStarted = startChat.getChatStarted();
         if(isChatStarted)
         {
+            console.log(isChatStarted);
             message.channel.send("Chat ended!");
             // await page.screenshot({path: 'kukichat.png'});
             isChatStarted = false;
+            console.log(isChatStarted);
             await browser.close();
         }
         else{

@@ -1,3 +1,5 @@
+# Unnecessary folder
 node_modules
+# Files which contain sensitive info
 config.json
 .env
