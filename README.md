@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Currently implementing chatbot functionality
-- This means startchat.js, tellbot.js, endchat.js are **INCOMPLETE**
+Implemented chatbot functionality
+- Patching chatbot bug where you can keep calling the "endchat" command even after the session has been closed
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
