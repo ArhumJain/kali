@@ -9,7 +9,7 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "[New command prefix]",
     permissionError: 'You must be an admin to execute the `!setprefix` command!',
-    // permissions: 'ADMINISTRATOR',
+    permissions: 'ADMINISTRATOR',
     callback: async (message, arguments, text) => {
         await mongo().then(async mongoose =>{
             const embed = new Discord.MessageEmbed()

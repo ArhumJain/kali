@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Chat bot has been patched and is now fully functional!
-- Implementing code compiler
+Code compiler implemented and fully functional! Report bugs in issues.
+- Polishing Chatbot
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)

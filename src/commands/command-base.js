@@ -38,6 +38,7 @@ const validatePermissions = (permissions) =>{
         'MANAGE_WEBHOOKS',
         'MANAGE_EMOJIS',
       ]
+      // Check if permissions passed are valid and supported permissions by Discord.
       for(const permission of permissions)
       {
           if(!validPermissions.includes(permission))
@@ -110,6 +111,7 @@ module.exports = (client, commandOptions) => {
         
     })
 }
+// mongo() connects to the MongoDB database and the following code loads in all custom prefixes set by all servers that have set a custom prefix
 module.exports.loadPrefixes = async (client) =>{
     await mongo().then(async mongoose => {
         try {

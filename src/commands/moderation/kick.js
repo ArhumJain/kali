@@ -3,10 +3,11 @@ module.exports = {
     commands: ['kick'],
     expectedArgs: '[user] [reason]',
     minArgs: 1,
-    // permissions: ['ADMINISTRATOR', 'KICK_MEMBERS'],
+    permissions: ['ADMINISTRATOR', 'KICK_MEMBERS'],
     requiredRoles: [],
     callback: (message, arguments, text) =>{
         const target = message.mentions.users.first();
+        // Checks if a target is a valid user in in the server --> If not sends a warning message
         if (target){
             const targetMember = message.guild.members.cache.get(target.id);
             const embed = new Discord.MessageEmbed()

@@ -4,12 +4,13 @@ module.exports = {
     commands: ['unban'],
     expectedArgs: '[user]',
     minArgs: 1,
-    // permissions: ['ADMINISTRATOR', 'KICK_MEMBERS'],
+    permissions: ['ADMINISTRATOR', 'KICK_MEMBERS'],
     requiredRoles: [],
     callback: (message, arguments, text) =>{
         let targetId;
         let targetTag = arguments.join(" ");
         console.log(targetTag);
+        // Obtain target user ID from tag as DiscordAPI only takes in ID as a parameter to unban users
         message.guild.fetchBans().then(bannedUsers => {
             targetId = bannedUsers.map(ban => {
                 console.log(ban.user.tag);

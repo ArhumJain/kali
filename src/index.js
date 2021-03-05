@@ -10,6 +10,7 @@ client.on('ready', () =>{
     const baseFile = 'command-base.js';
     const commandBase = require(`./commands/${baseFile}`);
     commandBase.loadPrefixes(client);
+    // Function to process all existing commands and initialize them for use
     const readCommands = dir => {
         const files = fs.readdirSync(path.join(__dirname, dir))
         for (const file of files) {
@@ -25,5 +26,6 @@ client.on('ready', () =>{
     }
     readCommands('commands');
 })
+// Allow other commands and files to access the client if it is needed
 module.exports = client;
 client.login(process.env.TOKEN);

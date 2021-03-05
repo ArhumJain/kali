@@ -1,5 +1,8 @@
-# Unnecessary folder
+# Unnecessary and legacy folders and files
 node_modules
+src/debug.png
+src/debug1.png
+src/commands/compiler/compile old.js
 # Files which contain sensitive info
 config.json
 .env

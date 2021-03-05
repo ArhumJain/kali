@@ -24,7 +24,7 @@ module.exports = {
             await page.setViewport({
                 width: 1280,
                 height: 720
-            })
+            });
             // await page.goto('https://www.pandorabots.com/mitsuku/');
             // await page.click("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
             // await page.waitForSelector("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
