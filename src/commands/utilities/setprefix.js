@@ -1,4 +1,3 @@
-const { DiscordAPIError } = require('discord.js');
 const mongo = require('../../mongo');
 const schema = require('../../schemas/prefix-schema');
 const commandBase = require("../command-base");
@@ -11,6 +10,7 @@ module.exports = {
     permissionError: 'You must be an admin to execute the `!setprefix` command!',
     permissions: 'ADMINISTRATOR',
     callback: async (message, arguments, text) => {
+        // Need to connect to MongoDB to store/update newly updated or added custom prefix
         await mongo().then(async mongoose =>{
             const embed = new Discord.MessageEmbed()
             .setTitle("Prefix Utility")
@@ -21,6 +21,7 @@ module.exports = {
                 value: `${message.author.tag} changed the prefix to \`${arguments[0]}\``
             })
             try{
+                // Update MongoDB collection
                 await schema.findOneAndUpdate({
                     _id: message.guild.id
                 }, {

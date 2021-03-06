@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Code compiler implemented and fully functional! Report bugs in issues.
-- Polishing Chatbot
+Add a some utilities: Server Info, User Info, and ability to retrieve current server prefix!
+- Polishing **stuff** :|
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
@@ -31,4 +31,3 @@ Code compiler implemented and fully functional! Report bugs in issues.
     - ```
       npm install puppeteer
       ```
-            

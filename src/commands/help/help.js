@@ -108,19 +108,19 @@ module.exports = {
             .setFooter("help categories")
             .addFields({
                 name: '__Utilities__',
-                value: `- \`${prefix}help utils\`: Get help on server commands regarding server utilities.`,
+                value: `> - \`${prefix}help utils\`: Get help on server commands regarding server utilities.`,
             }, {
                 name: "__Moderation__",
-                value: `- \`${prefix}help mod\`: Moderation commands such as ban and kick.js`,
+                value: `> - \`${prefix}help mod\`: Moderation commands such as ban and kick.js`,
             }, {
                 name: '__Code Compiler__',
-                value: `- \`${prefix}help compile\`: Kali bot can compile and run popular programming languages **in discord**! Find out how to use this powerful functionality with this command.`,
+                value: `> - \`${prefix}help compile\`: Kali bot can compile and run popular programming languages\n> **in discord**! Find out how to use this powerful functionality with this command.`,
             }, {
                 name: '__Chatbot__',
-                value: `- \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you can hold coversations!`,
+                value: `> - \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you\n> can hold coversations!`,
             }, {
                 name: '__Miscellaneous__',
-                value: `- \`${prefix}help misc\`: Commands which dont fit into the categories listed above.`
+                value: `> - \`${prefix}help misc\`: Commands which dont fit into the categories listed above.`
             });
             message.reply("Helping you now!");
             message.channel.send(embed);
