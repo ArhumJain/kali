@@ -18,21 +18,36 @@ module.exports = {
                 // Category help for Utilities
                 case 'utils':
                     message.channel.send("Utilities help");
+                    embed.setTitle("Utlitiies Help")
+                    .setColor(color)
+                    .setFooter(`Help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
+                    .addFields({
+                        name: "__Prefix Commands__",
+                        value: `> - \`${prefix}prefix\`: Get the current prefix of the server\n> - \`${prefix}setprefix [prefix]\`: Set a custom prefix. Requires administrator permissions!`
+                    }, {
+                        name: "__Information Commands__",
+                        value: `> - \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If\n> not specified, will default to your own user information.\n> - \`${prefix}serverinfo\`: Obtain information like stats about the server.\n> - \`${prefix}botinfo\`: Obtain information about Kali bot.`
+                    }, {
+                        name: "__Kick members__",
+                        value: `> - \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They will,\n> however, be able to join back given the invite link!`,
+                    })
+                    message.channel.send(embed);
                     break;
                 // Category help for moderation
                 case 'mod':
                     embed.setTitle("Moderation Help")
                     .setColor(color)
-                    .setFooter("User requires elevated server permissions to use these commands")
+                    .setFooter(`Moderation help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
+                    .setDescription("These commands require elevated user permissions. Standard server members will not be able to execute these commands!")
                     .addFields({
                         name: "__Ban members__",
-                        value: `- \`${prefix}ban [@user] [reason]\`: Members will **not** be able to join back unless you unban them!`
+                        value: `> - \`${prefix}ban [@user] [reason]\`: Members will **not** be able to join back unless you unban them!`
                     }, {
                         name: "__Unban members__",
-                        value: `- \`${prefix}unban [usertag]\`: Unban banned members.`
+                        value: `> - \`${prefix}unban [usertag]\`: Unban banned members.`
                     }, {
                         name: "__Kick members__",
-                        value: `- \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They will, however, be able to join back given the invite link!`,
+                        value: `> - \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They \n> will, however, be able to join back given the invite link!`,
                     })
                     message.channel.send(embed);
                     break;
@@ -40,15 +55,17 @@ module.exports = {
                 case 'chatbot':
                     embed.setTitle("Chatbot Help")
                     .setColor(color)
+                    .setDescription("Kali can be a really fun bot to talk with. Try it out! She's fun, quirky, and might even surprise you every now and then! To start a conversation with her, you can use the commands below and start by saying 'Hi!' (Or whatever you want).")
+                    .setFooter(`Chatbot help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
                     .addFields({
                         name: "__Start chat__",
-                        value: `- \`${prefix}startchat\`: Kali bot needs to power on it's engine which give it advanced intelligence!`
+                        value: `>  - \`${prefix}startchat\`: Kali bot needs to power on her engine which gives it advanced intelligence!`
                     }, {
                         name: "__End chat__",
-                        value: `- \`${prefix}endchat\`: Shut down Kali bot's chat engine.`
+                        value: `> - \`${prefix}endchat\`: Shut down Kali bot's chat engine.`
                     }, {
                         name: "__Talk to the bot__",
-                        value: `- \`${prefix}tellbot [message]\`: Relay a conversational message to Kali so she can respond to you!`,
+                        value: `> - \`${prefix}tellbot [message]\`: Relay a conversational message to Kali so she can respond\n> to you!`,
                     })
                     message.channel.send(embed);
                     break;
@@ -60,14 +77,17 @@ module.exports = {
                         // Help embed for listing out all languages supported by the compiler (There are 37 in total)
                         embed.setTitle("__Supported Languages__")
                         .setColor(color)
+                        .setDescription("A list of 30+ languages that Kali bot can compile!")
+                        .setFooter(`List of supported languages requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
                         .addFields({
                            name: "A-L",
-                           value:  `Bash script: \`bash\`\n C: \`c\`\n C#: \`csharp\`\n C++: \`cpp\`\n CMake: \`cmake\`\n CoffeeScript: \`cscript\`\n Crystal: \`crystal\`\n D: \`d\`\n Elixir: \`elixir\`\n F#: \`fsharp\`\n Go: \`go\`\n Groovy: \`groovy\`\n Haskell: \`haskell\`
-                           Java: \`java\`\n JavaScript: \`jscript\`\n Lazy K: \`lazyk\`\n Lisp: \`lisp\`\nLua: \`lua\``,
+                           value:  `> Bash script: \`bash\`\n> C: \`c\`\n> C#: \`csharp\`\n> C++: \`cpp\`\n> CMake: \`cmake\`\n> CoffeeScript: \`cscript\`\n> Crystal: \`crystal\`\n> D: \`d\`\n> Elixir: \`elixir\`\n> F#: \`fsharp\`\n> Go: \`go\`\n> Groovy: \`groovy\`\n> Haskell: \`haskell\`
+                           > Java: \`java\`\n> JavaScript: \`jscript\`\n> Lazy K: \`lazyk\`\n> Lisp: \`lisp\`\n> Lua: \`lua\``,
                            inline: true,
                         }, {
                             name: "M-Z",
-                            value: `Nim: \`nim\`\n OCaml: \`ocaml\`\n OpenSSL: \`ossl\`\n PHP: \`php\`\n Pascal: \`pascal\`\n Perl: \`perl\`\n Pony: \`pony\`\n Python: \`python\`\n R: \`r\`\n Rill: \`rill\`\n Ruby: \`ruby\`\n Rust: \`rust\`\n SQL: \`sql\`
+                            // I found out >>> was a thing ;(
+                            value: `>>> Nim: \`nim\`\n OCaml: \`ocaml\`\n OpenSSL: \`ossl\`\n PHP: \`php\`\n Pascal: \`pascal\`\n Perl: \`perl\`\n Pony: \`pony\`\n Python: \`python\`\n R: \`r\`\n Rill: \`rill\`\n Ruby: \`ruby\`\n Rust: \`rust\`\n SQL: \`sql\`
                             Scala: \`scala\`\n Swift: \`swift\`\n TypeScript: \`tscript\`\n Vim script: \`vscript\``,
                             inline: true,
                         })
@@ -77,6 +97,8 @@ module.exports = {
                     }
                     embed.setTitle("Compiler Help")
                     .setColor(color)
+                    .setFooter(`Compiler help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
+                    .setDescription("Instructions on how to use Kali's Code Compiler!")
                     .addFields({
                         name: "__Supported Languages__",
                         value: `- You can use \`${prefix}help compile langs\` to obtain a list of all supported languages that Kali can compile! (Your langauge is likely supported)`
@@ -105,7 +127,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setTitle("Help Categories")
             .setColor(color)
-            .setFooter("help categories")
+            .setFooter(`Help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
             .addFields({
                 name: '__Utilities__',
                 value: `> - \`${prefix}help utils\`: Get help on server commands regarding server utilities.`,
