@@ -2,6 +2,7 @@ const commandBase = require('../command-base');
 const puppeteer = require('puppeteer');
 const Discord = require('discord.js');
 const prefix = commandBase.getGuildPrefix();
+const runWandbox = require("wandbox-api");
 let supportedLangs = {
     
     "python": "https://wandbox.org/nojs/cpython-head",
@@ -75,6 +76,7 @@ const compile = async (selectLanguage, codeSentByUser, message) =>{
     // isCompiling is set to false when the main callback function finishes executing. At that point this function is available to be run again
     if(isCompiling == false){
         isCompiling = true;
+        await page.screenshot({page: "compilerscreenshot.png"});
         await page.goto(selectLanguage);
         await page.$eval('[name="code"]', (el, value) => el.value = value, codeSentByUser[0]);
         await page.click('[name="save"]');

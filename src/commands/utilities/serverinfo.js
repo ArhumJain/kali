@@ -31,6 +31,8 @@ module.exports = {
             },{
                 name: "Invite",
                 value: `**Server invite link:** Not implemented yet`,
+            }, {
+                name: ""
             });
             message.channel.send(embed);
         });

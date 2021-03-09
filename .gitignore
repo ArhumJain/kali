@@ -1,8 +1,14 @@
 # Unnecessary and legacy folders and files
+#-------------------------------------------
 node_modules
+#PNG files are some debug screenshots just to see what the puppeteer browsers are up to
 src/debug.png
 src/debug1.png
+src/kalichat.png
+#Old testing files for Kail bot Compiler
 src/commands/compiler/compile old.js
+src/commands/compiler/compiletestwithnpm.js
+# -------------------------------------------
 # Files which contain sensitive info
 config.json
 .env

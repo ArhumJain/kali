@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const commandBase = require('../command-base');
+// We require puppeteer as we are scraping using the Kuki AI and sending messages through the browser and then reading Kuki's message and sending it through discord
 const puppeteer = require('puppeteer');
 
 let browser = null;
@@ -12,8 +13,10 @@ module.exports = {
     permissions: [],
     requiredRoles: [],
     callback: async (message, arguments, text) =>{
+        // If the browser is already open, we do not want to open another one while it is still active!
         if(!chatStarted){
             message.channel.send(":gear: Starting chat...");
+            // Start up the puppeteer browser
             browser = await puppeteer.launch({
                 args: [
                     '--no-sandbox',
@@ -25,16 +28,22 @@ module.exports = {
                 width: 1280,
                 height: 720
             });
-            // await page.goto('https://www.pandorabots.com/mitsuku/');
-            // await page.click("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
-            // await page.waitForSelector("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
-            // await page.click("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
-            // await page.waitForSelector("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
-            // await page.click("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
-            // await page.waitForXPath("//*[@id='main-input']/input");
+            // Navigate to chat bot website
             await page.goto("https://www.pandorabots.com/mitsuku/");
-            await page.click("#pb-widget > div > div > button");
-            await page.waitForSelector("#pb-widget-input-field");
+            
+            // Click on, "I am new here"
+            await page.waitForSelector("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
+            await page.click("#pb-message-container > div > div:nth-child(4) > div > button:nth-child(2)");
+            
+            // Click on "Accept Terms and Conditions"
+            await page.waitForSelector("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
+            await page.click("#pb-message-container > div:nth-child(2) > div:nth-child(2) > div > button:nth-child(1)");
+            // Click  on "Just Chat"
+            await page.waitForSelector("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
+            await page.click("#pb-message-container > div:nth-child(4) > div:nth-child(2) > div > button:nth-child(2)");
+            
+            await page.screenshot({path: "debug.png"});
+            // await page.waitForSelector("#pb-widget-input-field");
             chatStarted = true;
             message.channel.send("Chat started!");
         }
@@ -44,6 +53,7 @@ module.exports = {
         
     },
 }
+// Public methods to obtain the reference of the browser started by puppeteer in this script as well as other key variables
 module.exports.getBrowser = () =>{
     return browser;
 }

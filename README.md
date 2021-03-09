@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Add a some utilities: Server Info, User Info, and ability to retrieve current server prefix!
-- Polishing **stuff** :|
+Fixed chat bot because it BROKE :(! All good now so :)
+- Polishing chat bot and compiler. Also going to create a botinfo command
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
