@@ -7,7 +7,7 @@ src/debug1.png
 src/kalichat.png
 #Old testing files for Kail bot Compiler
 src/commands/compiler/compile old.js
-src/commands/compiler/compiletestwithnpm.js
+src/commands/compiler/compilepuppeteer.js
 # -------------------------------------------
 # Files which contain sensitive info
 config.json

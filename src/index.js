@@ -7,8 +7,9 @@ require('dotenv').config();
 client.on('ready', () =>{
     console.log(`Client ready! Logged in as ${client.user.tag}!`);
     client.user.setActivity("your every move...", {type:"WATCHING"});
-    const baseFile = 'command-base.js';
-    const commandBase = require(`./commands/${baseFile}`);
+    const commandBaseFile = 'command-base.js';
+    const compilerBaseFile = 'compiler-base.js';
+    const commandBase = require(`./commands/${commandBaseFile}`);
     commandBase.loadPrefixes(client);
     // Function to process all existing commands and initialize them for use
     const readCommands = dir => {
@@ -18,7 +19,7 @@ client.on('ready', () =>{
             if(stat.isDirectory()) {
                 readCommands(path.join(dir, file));
             }
-            else if(file !== baseFile) {
+            else if(file !== commandBaseFile && file !== compilerBaseFile) {
                 const option = require(path.join(__dirname, dir, file));
                 commandBase(client, option);
             }

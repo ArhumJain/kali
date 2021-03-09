@@ -1,5 +1,5 @@
 # Kali Discord Bot
-Fixed chat bot because it BROKE :(! All good now so :)
+Compiler got HUGE buffs! Instead of being web automated, it operates fully on a request based system and directly interacts with the wandbox API! 🔥
 - Polishing chat bot and compiler. Also going to create a botinfo command
 ---
 ## Usage
