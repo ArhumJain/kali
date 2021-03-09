@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const commandBase = require('../command-base');
 const puppeteer = require('puppeteer');
+// So we can access public methods and reference public variables from startchat.js
 const startChat = require('./startchat');
 const prefix = commandBase.getGuildPrefix();
 module.exports = {
@@ -12,13 +13,11 @@ module.exports = {
         const browser = startChat.getBrowser();
         const page = startChat.getPage();
         let isChatStarted = startChat.getChatStarted();
+        // Check if browser already open, if it is, we can shut it down
         if(isChatStarted)
         {
-            console.log(isChatStarted);
             message.channel.send("Chat ended!");
-            // await page.screenshot({path: 'kukichat.png'});
             startChat.setChatStarted(false);
-            console.log(isChatStarted);
             await browser.close();
         }
         else{
