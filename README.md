@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Compiler got HUGE buffs! Instead of being web automated, it operates fully on a request based system and directly interacts with the wandbox API! 🔥
-- Polishing chat bot and compiler. Also going to create a botinfo command
+Created the bot info command!
+- Working on moderation logs
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)

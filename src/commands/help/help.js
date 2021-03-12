@@ -27,10 +27,7 @@ module.exports = {
                     }, {
                         name: "__Information Commands__",
                         value: `> - \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If\n> not specified, will default to your own user information.\n> - \`${prefix}serverinfo\`: Obtain information like stats about the server.\n> - \`${prefix}botinfo\`: Obtain information about Kali bot.`
-                    }, {
-                        name: "__Kick members__",
-                        value: `> - \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They will,\n> however, be able to join back given the invite link!`,
-                    })
+                    });
                     message.channel.send(embed);
                     break;
                 // Category help for moderation
@@ -128,21 +125,22 @@ module.exports = {
             .setTitle("Help Categories")
             .setColor(color)
             .setFooter(`Help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
+            .setDescription("The following commands identify help categories for which you can get more information on. If you're up for it, you might even find a command for a little **secret** :smirk:")
             .addFields({
                 name: '__Utilities__',
-                value: `> - \`${prefix}help utils\`: Get help on server commands regarding server utilities.`,
+                value: `> - \`${prefix}help utils\`: Get help on server commands regarding server utilities**!**`,
             }, {
                 name: "__Moderation__",
-                value: `> - \`${prefix}help mod\`: Moderation commands such as ban and kick.js`,
+                value: `> - \`${prefix}help mod\`: Moderation command**s** such as ban and kick!`,
             }, {
                 name: '__Code Compiler__',
-                value: `> - \`${prefix}help compile\`: Kali bot can compile and run popular programming languages\n> **in discord**! Find out how to use this powerful functionality with this command.`,
+                value: `> - \`${prefix}help compile\`: Kali bot can compil**e** and run popular programming languages\n> **in discord**! Find out how to use this powerful fun**c**tionality with this command.`,
             }, {
                 name: '__Chatbot__',
-                value: `> - \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you\n> can hold coversations!`,
+                value: `> - \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you\n> can hold cove**r**sations!`,
             }, {
                 name: '__Miscellaneous__',
-                value: `> - \`${prefix}help misc\`: Commands which dont fit into the categories listed above.`
+                value: `> - \`${prefix}help misc\`: Commands which dont fit into the cat**e**gories lis**t**ed above.`
             });
             message.reply("Helping you now!");
             message.channel.send(embed);
