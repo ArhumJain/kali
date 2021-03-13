@@ -1,6 +1,6 @@
 const { User } = require('discord.js');
 const mongo = require('../mongo');
-const prefixSchema = require("../schemas/prefix-schema");
+const prefixSchema = require("../schemas/server-settings");
 require('dotenv').config();
 const globalPrefix = process.env.PREFIX;
 const guildPrefixes = {};
@@ -75,7 +75,7 @@ module.exports = (client, commandOptions) => {
     // Listen for messages
     client.on('message', message =>{
         const {member, content, guild} = message;
-        const prefix = guildPrefixes[guild.id] || globalPrefix;
+        const prefix = guildPrefixes[guild.id] || globalPrefix;       
         for (const alias of commands){
             if(content.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`)){
                 // Run command
@@ -135,6 +135,7 @@ module.exports.loadPrefixes = async (client) =>{
 module.exports.updatePrefix = (guildId, newPrefix) =>{
     guildPrefixes[guildId] = newPrefix;
 }
+
 module.exports.getGuildPrefix = (guildId) =>{
     if(guildPrefixes.hasOwnProperty(guildId)){
         return guildPrefixes[guildId];

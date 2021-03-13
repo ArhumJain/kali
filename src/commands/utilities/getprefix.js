@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 0,
     callback: async (message, arguments, text) => {
         // Obtain current server prefix to send to the user
-        const serverPrefix = commandBase.getGuildPrefix();
+        const serverPrefix = commandBase.getGuildPrefix(message.guild.id);
         const embed = new Discord.MessageEmbed()
         .setTitle("Server Prefix")
         .setColor("#FF003E")

@@ -7,6 +7,7 @@ require('dotenv').config();
 client.on('ready', () =>{
     console.log(`Client ready! Logged in as ${client.user.tag}!`);
     client.user.setActivity("your every move...", {type:"WATCHING"});
+    const logsBaseFile = 'logs-base.js';
     const commandBaseFile = 'command-base.js';
     const compilerBaseFile = 'compiler-base.js';
     const commandBase = require(`./commands/${commandBaseFile}`);
@@ -19,7 +20,7 @@ client.on('ready', () =>{
             if(stat.isDirectory()) {
                 readCommands(path.join(dir, file));
             }
-            else if(file !== commandBaseFile && file !== compilerBaseFile) {
+            else if(file !== commandBaseFile && file !== compilerBaseFile && file !== logsBaseFile) {
                 const option = require(path.join(__dirname, dir, file));
                 commandBase(client, option);
             }
