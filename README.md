@@ -18,7 +18,7 @@ Created the bot info command!
             ```
             const mongoPath = "mongodb+srv://<user>:<password>@cluster0.jx4hq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
             ```
-4. You need to **npm install** the following packages for the bot to work (You may skip this step if running on a server like Heroku; all you need is the package.json to let the web service provider know what the project dependencies are)
+4. You need to **npm install** the following packages for the bot to work. Incase I forget to include any packages here, you can check the package.json file for all the dependencies needed for this. (You may skip this step if running on a server like Heroku; all you need is the package.json to let the web service provider know what the project dependencies are)
     - ```
       npm install dotenv
       ```
@@ -30,4 +30,7 @@ Created the bot info command!
       ```
     - ```
       npm install puppeteer
+      ```
+    - ```
+      npm install request
       ```
