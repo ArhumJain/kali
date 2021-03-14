@@ -11,7 +11,11 @@ client.on('ready', () =>{
     const commandBaseFile = 'command-base.js';
     const compilerBaseFile = 'compiler-base.js';
     const commandBase = require(`./commands/${commandBaseFile}`);
+    const logsBase = require(`./commands/${logsBaseFile}`);
+    logsBase.loadLogSettings(client);
     commandBase.loadPrefixes(client);
+    // Ready event listeners logging audit logs to a channel
+    logsBase(client);
     // Function to process all existing commands and initialize them for use
     const readCommands = dir => {
         const files = fs.readdirSync(path.join(__dirname, dir))

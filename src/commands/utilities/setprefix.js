@@ -1,6 +1,7 @@
 const mongo = require('../../mongo');
 const schema = require('../../schemas/server-settings');
 const commandBase = require("../command-base");
+const logsBase = require("../logs-base");
 const Discord = require('discord.js');
 module.exports = {
     commands: ['setprefix'],
@@ -27,8 +28,8 @@ module.exports = {
                 }, {
                     _id: message.guild.id,
                     prefix: arguments[0],
-                    isLogsEnabled: false,
-                    logsChannel: undefined,
+                    isLogsEnabled: logsBase.isLogsEnabled(message.guild.id),
+                    logsChannel: logsBase.getLogsChannel(message.guild.id),
                 }, {
                     upsert: true
                 })

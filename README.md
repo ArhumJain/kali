@@ -1,5 +1,5 @@
 # Kali Discord Bot
-Created the bot info command!
+Base code and functionality for audit logging to a channel implemented. (With server-enabled specific capabilities 🔥)
 - Working on moderation logs
 ---
 ## Usage
