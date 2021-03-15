@@ -88,7 +88,7 @@ module.exports = (client) =>{
                 client.channels.cache.get(getLogsChannel(oldMessage.guild.id)).send(embed);
             }
         }
-    })
+    });
     client.on("emojiCreate", (emoji) => {
         if(isLogsEnabled(emoji.guild.id)){
             const embed = new Discord.MessageEmbed();
@@ -100,16 +100,64 @@ module.exports = (client) =>{
             client.channels.cache.get(getLogsChannel(emoji.guild.id)).send(embed);
         }
     });
+    client.on("emojiUpdate", (oldEmoji, newEmoji) => {
+        if(isLogsEnabled(oldEmoji.guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Emoji Updated")
+            .setColor(LIGHTBLUE)
+            .setFooter(`Emoji ID:  ${newEmoji.id}`)
+            .addFields({
+                name: "__Old Emoji__",
+                value: `**Name:** ${oldEmoji.name}\n**Animated**: ${oldEmoji.animated}\n**Emoji:**\n${oldEmoji.toString()}\n**Raw link:** ${oldEmoji.url}`
+            }, {
+                name: "__Updated Emoji__",
+                value: `**Name:** ${newEmoji.name}\n**Animated**: ${newEmoji.animated}\n**Emoji:**\n${newEmoji.toString()}\n**Raw link:** ${newEmoji.url}`
+            });
+            client.channels.cache.get(getLogsChannel(newEmoji.guild.id)).send(embed);
+        }
+    });
     client.on("emojiDelete", (emoji) => {
-        const embed = new Discord.MessageEmbed();
-        embed.setTitle("Emoji Deleted")
-        .setTimestamp()
-        .setColor(RED)
-        .setDescription(`**Name:** ${emoji.name}\n**Animated**: ${emoji.animated}\n**Raw link:** ${emoji.url}`)
-        .setFooter(`Emoji ID: ${emoji.id}`)
-        client.channels.cache.get(getLogsChannel(emoji.guild.id)).send(embed);
+        if(isLogsEnabled(emoji.guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Emoji Deleted")
+            .setTimestamp()
+            .setColor(RED)
+            .setDescription(`**Name:** ${emoji.name}\n**Animated**: ${emoji.animated}\n**Raw link:** ${emoji.url}`)
+            .setFooter(`Emoji ID: ${emoji.id}`)
+            client.channels.cache.get(getLogsChannel(emoji.guild.id)).send(embed);
+        }
 
-    })
+    });
+    client.on("guildBanAdd", (guild, user) => {
+        console.log(`${user.tag} was banned`);
+        if(isLogsEnabled(guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Member Banned")
+            .setTimestamp()
+            .setColor(RED)
+            .setThumbnail(user.avatarURL())
+            .setDescription(`A server member banned\n**Server Nickname:** ${guild.member(user).displayName}\n**User tag:** ${user.tag}\n**Number ID:** ${user.id}`);
+            client.channels.cache.get(getLogsChannel(guild.id)).send(embed);
+
+        }
+    });
+    client.on("guildBanRemove", (guild, user) =>
+    {
+        console.log(`${user.tag} was unbanned`);
+        if(isLogsEnabled(guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Member Unbaned")
+            .setTimestamp()
+            .setColor(GREEN)
+            .setThumbnail(user.avatarURL())
+            .setDescription(`A server member was unbannned\n**User tag:** ${user.tag}\n**Number ID:** ${user.id}`);
+            client.channels.cache.get(getLogsChannel(guild.id)).send(embed);
+        }
+    });
     client.on("channelCreate", (channel) => {
         if(isLogsEnabled(channel.guild.id))
         {

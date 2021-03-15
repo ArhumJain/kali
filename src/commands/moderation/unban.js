@@ -24,7 +24,7 @@ module.exports = {
                 .setTitle("Unban Successful")
                 .setColor("#FF003E")
                 .addFields({
-                    name: `${targetTag}!`,
+                    name: `${targetTag}`,
                     value: "was unbanned!"
                 });
                 message.guild.members.unban(targetId);
