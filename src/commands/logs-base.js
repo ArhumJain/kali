@@ -89,6 +89,27 @@ module.exports = (client) =>{
             }
         }
     })
+    client.on("emojiCreate", (emoji) => {
+        if(isLogsEnabled(emoji.guild.id)){
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Emoji Created")
+            .setTimestamp()
+            .setColor(GREEN)
+            .setFooter(`Emoji ID: ${emoji.id}`)
+            .setDescription(`**Name:** ${emoji.name}\n**Animated**: ${emoji.animated}\n**Emoji:**\n${emoji.toString()}\n**Raw link:** ${emoji.url}`);
+            client.channels.cache.get(getLogsChannel(emoji.guild.id)).send(embed);
+        }
+    });
+    client.on("emojiDelete", (emoji) => {
+        const embed = new Discord.MessageEmbed();
+        embed.setTitle("Emoji Deleted")
+        .setTimestamp()
+        .setColor(RED)
+        .setDescription(`**Name:** ${emoji.name}\n**Animated**: ${emoji.animated}\n**Raw link:** ${emoji.url}`)
+        .setFooter(`Emoji ID: ${emoji.id}`)
+        client.channels.cache.get(getLogsChannel(emoji.guild.id)).send(embed);
+
+    })
     client.on("channelCreate", (channel) => {
         if(isLogsEnabled(channel.guild.id))
         {
