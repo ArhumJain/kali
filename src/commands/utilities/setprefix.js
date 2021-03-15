@@ -28,8 +28,8 @@ module.exports = {
                 }, {
                     _id: message.guild.id,
                     prefix: arguments[0],
-                    isLogsEnabled: logsBase.isLogsEnabled(message.guild.id),
-                    logsChannel: logsBase.getLogsChannel(message.guild.id),
+                    // isLogsEnabled: logsBase.isLogsEnabled(message.guild.id),
+                    // logsChannel: logsBase.getLogsChannel(message.guild.id),
                 }, {
                     upsert: true
                 })

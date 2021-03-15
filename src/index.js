@@ -32,6 +32,9 @@ client.on('ready', () =>{
     }
     readCommands('commands');
 })
+client.on("disconnect", (event) => {
+    console.log("Kali has been disconnected!");
+})
 // Allow other commands and files to access the client if it is needed
 module.exports = client;
 client.login(process.env.TOKEN);

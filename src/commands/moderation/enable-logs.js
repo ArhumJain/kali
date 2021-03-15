@@ -32,8 +32,6 @@ module.exports = {
                         await schema.findOneAndUpdate({
                             _id: guild.id
                         }, {
-                            _id: guild.id,
-                            prefix: commandBase.getGuildPrefix(guild.id),
                             isLogsEnabled: true,
                             logsChannel: channel,
                         }, {
