@@ -130,8 +130,43 @@ module.exports = (client) =>{
         }
 
     });
+    client.on("roleCreate", (role) => {
+        if(isLogsEnabled(role.guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("New Role Created")
+            .setTimestamp()
+            .setColor(GREEN)
+            .setDescription(`**Name:** ${role.name}\n**Color:** ${role.hexColor}\n**Role ID:** ${role.id}`);
+            client.channels.cache.get(getLogsChannel(role.guild.id)).send(embed); 
+        }
+    });
+    client.on("roleDelete", (role) => {
+        if(isLogsEnabled(role.guild.id))
+        {
+            const embed = new Discord.MessageEmbed();
+            embed.setTitle("Role Deleted")
+            .setTimestamp()
+            .setColor(RED)
+            .setDescription(`**Name:** ${role.name}\n**Color:** ${role.hexColor}\n**Role ID:** ${role.id}`);
+            client.channels.cache.get(getLogsChannel(role.guild.id)).send(embed); 
+        }
+    });
+    client.on("roleUpdate", (oldRole, newRole) => {
+        if(isLogsEnabled(newRole.guild.id))
+        {
+            if(oldRole.name != newRole.name || oldRole.hexColor != newRole.hexColor)
+            {
+                const embed = new Discord.MessageEmbed();
+                embed.setTitle("Role Updated")
+                .setTimestamp()
+                .setColor(newRole.hexColor)
+                .setDescription(`**Name:** ${newRole.name}\n**Color:** ${newRole.hexColor}\n**Role ID:** ${newRole.id}`);
+                client.channels.cache.get(getLogsChannel(newRole.guild.id)).send(embed);
+            }
+        }
+    });
     client.on("guildBanAdd", (guild, user) => {
-        console.log(`${user.tag} was banned`);
         if(isLogsEnabled(guild.id))
         {
             const embed = new Discord.MessageEmbed();
@@ -146,7 +181,6 @@ module.exports = (client) =>{
     });
     client.on("guildBanRemove", (guild, user) =>
     {
-        console.log(`${user.tag} was unbanned`);
         if(isLogsEnabled(guild.id))
         {
             const embed = new Discord.MessageEmbed();
