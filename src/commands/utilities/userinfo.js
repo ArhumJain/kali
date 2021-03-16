@@ -27,11 +27,11 @@ module.exports = {
         .setFooter(`Requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
         .setThumbnail(user.avatarURL({dynamic : true}))
         .addFields({
+            name:"__Identification__",
+            value:`> **User tag:** ${user.tag}\n> **Server nickname:** ${userMember.displayName}\n> **Number ID:** ${user.id}\n> **Bot:** ${user.bot}`
+        }, {
             name: "__Join Dates__",
             value: `> **Joined Discord:** ${user.createdAt}\n> **Joined Server:** ${userMember.joinedAt}`,
-        },{
-            name:"__Identification__",
-            value:`> **Number ID:** ${user.id}\n> **User tag:** ${user.tag}\n> **Server nickname:** ${userMember.displayName}`
         });
         message.channel.send(embed);
     }

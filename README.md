@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Added role info command
-- Working on adding a couple info commands
+Added channel info command
+- Working on polishes
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
