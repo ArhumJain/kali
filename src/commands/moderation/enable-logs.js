@@ -13,7 +13,8 @@ module.exports = {
     permissions: 'ADMINISTRATOR',
     callback: async (message, arguments, text) => {
         // Need to connect to MongoDB to store/update info
-        const channel = arguments[0];
+        const channel = arguments[0].replaceAll(/<|>|#/g, '');
+        console.log(channel);
         const guild = message.guild;
         if(guild.channels.cache.has(channel)){
             if(client.channels.cache.get(channel).isText()){

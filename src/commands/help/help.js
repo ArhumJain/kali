@@ -26,7 +26,7 @@ module.exports = {
                         value: `> - \`${prefix}prefix\`: Get the current prefix of the server\n> - \`${prefix}setprefix [prefix]\`: Set a custom prefix. Requires administrator permissions!`
                     }, {
                         name: "__Information Commands__",
-                        value: `> - \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If\n> not specified, will default to your own user information.\n> - \`${prefix}serverinfo\`: Obtain information like stats about the server.\n> - \`${prefix}botinfo\`: Obtain information about Kali bot.`
+                        value: `> - \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If\n> not specified, will default to your own user information.\n> - \`${prefix}serverinfo\`: Obtain information like stats about the server.\n> - \`${prefix}botinfo\`: Obtain information about Kali bot.\n> -\`${prefix}logsenabled\`: Check if audit logs to a channel are enabled`
                     });
                     message.channel.send(embed);
                     break;
@@ -45,7 +45,13 @@ module.exports = {
                     }, {
                         name: "__Kick members__",
                         value: `> - \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They \n> will, however, be able to join back given the invite link!`,
-                    })
+                    }, {
+                        name: "__Enable Audit Logs__",
+                        value: `> - \`${prefix}enablelogs [#channel/channelID]\`: Enable audit logs to be sent to a channel`
+                    }, {
+                        name: "__Disable Audit Logs__",
+                        value: `> - \`${prefix}disablelogs\`: Disable audit logging if enabled`,
+                    });
                     message.channel.send(embed);
                     break;
                 // Category help for Kali Chatbot

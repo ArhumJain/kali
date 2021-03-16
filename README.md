@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Base code and functionality for audit logging to a channel implemented. (With server-enabled specific capabilities 🔥)
-- Working on moderation logs
+Added role info command
+- Working on adding a couple info commands
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
