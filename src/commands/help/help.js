@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const commandBase = require('../command-base');
+require('dotenv').config();
+const bulletpoint = process.env.BULLETPOINTEMOJI
 module.exports = {
     commands: ['help'],
     minArgs: 0,
@@ -23,10 +25,10 @@ module.exports = {
                     .setFooter(`Help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
                     .addFields({
                         name: "__Prefix Commands__",
-                        value: `- \`${prefix}prefix\`: Get the current prefix of the server\n> - \`${prefix}setprefix [prefix]\`: Set a custom prefix. Requires administrator permissions!`
+                        value: `${bulletpoint} \`${prefix}prefix\`: Get the current prefix of the server\n${bulletpoint} \`${prefix}setprefix [prefix]\`: Set a custom prefix. Requires administrator permissions!`
                     }, {
                         name: "__Information Commands__",
-                        value: `- \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If\n> not specified, will default to your own user information.\n> - \`${prefix}serverinfo\`: Obtain information like stats about the server.\n> -\`${prefix}roleinfo [role ID/@role]\`: Get more information on a specific role\n> -\`${prefix}channelinfo [channel ID/#channel]\`: Get more information on a specific channel/category\n> - \`${prefix}botinfo\`: Obtain information about Kali bot.\n> -\`${prefix}logsenabled\`: Check if audit logs to a channel are enabled`
+                        value: `${bulletpoint} \`${prefix}userinfo [optional: @user]\`: Obtain information about a particular user. If not specified, will default to your own user information.\n${bulletpoint} \`${prefix}serverinfo\`: Obtain information like stats about the server.\n${bulletpoint} \`${prefix}roleinfo [role ID/@role]\`: Get more information on a specific role\n${bulletpoint} \`${prefix}channelinfo [channel ID/#channel]\`: Get more information on a specific channel/category\n${bulletpoint} \`${prefix}botinfo\`: Obtain information about Kali bot.\n${bulletpoint} \`${prefix}logsenabled\`: Check if audit logs to a channel are enabled`
                     });
                     message.channel.send(embed);
                     break;
@@ -38,19 +40,19 @@ module.exports = {
                     .setDescription("These commands require elevated user permissions. Standard server members will not be able to execute these commands!")
                     .addFields({
                         name: "__Ban members__",
-                        value: `- \`${prefix}ban [@user] [reason]\`: Members will **not** be able to join back unless you unban them!`
+                        value: `${bulletpoint} \`${prefix}ban [@user] [reason]\`: Members will **not** be able to join back unless you unban them!`
                     }, {
                         name: "__Unban members__",
-                        value: `- \`${prefix}unban [usertag]\`: Unban banned members.`
+                        value: `${bulletpoint} \`${prefix}unban [usertag]\`: Unban banned members.`
                     }, {
                         name: "__Kick members__",
-                        value: `- \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They will, however, be able to join back given the invite link!`,
+                        value: `${bulletpoint} \`${prefix}kick [@user] [reason]\`: Kick an existing member out of the server. They will, however, be able to join back given the invite link!`,
                     }, {
                         name: "__Enable Audit Logs__",
-                        value: `- \`${prefix}enablelogs [#channel/channelID]\`: Enable audit logs to be sent to a channel`
+                        value: `${bulletpoint} \`${prefix}enablelogs [#channel/channelID]\`: Enable audit logs to be sent to a channel`
                     }, {
                         name: "__Disable Audit Logs__",
-                        value: `- \`${prefix}disablelogs\`: Disable audit logging if enabled`,
+                        value: `${bulletpoint} \`${prefix}disablelogs\`: Disable audit logging if enabled`,
                     });
                     message.channel.send(embed);
                     break;
@@ -62,13 +64,13 @@ module.exports = {
                     .setFooter(`Chatbot help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
                     .addFields({
                         name: "__Start chat__",
-                        value: `- \`${prefix}startchat\`: Kali bot needs to power on her engine which gives it advanced intelligence!`
+                        value: `${bulletpoint} \`${prefix}startchat\`: Kali bot needs to power on her engine which gives it advanced intelligence!`
                     }, {
                         name: "__End chat__",
-                        value: `- \`${prefix}endchat\`: Shut down Kali bot's chat engine.`
+                        value: `${bulletpoint} \`${prefix}endchat\`: Shut down Kali bot's chat engine.`
                     }, {
                         name: "__Talk to the bot__",
-                        value: `- \`${prefix}tellbot [message]\`: Relay a conversational message to Kali so she can respond to you!`,
+                        value: `${bulletpoint} \`${prefix}tellbot [message]\`: Relay a conversational message to Kali so she can respond to you!`,
                     })
                     message.channel.send(embed);
                     break;
@@ -104,10 +106,10 @@ module.exports = {
                     .setDescription("Instructions on how to use Kali's Code Compiler!")
                     .addFields({
                         name: "__Supported Languages__",
-                        value: `- You can use \`${prefix}help compile langs\` to obtain a list of all supported languages that Kali can compile! (Your langauge is likely supported)`
+                        value: `You can use \`${prefix}help compile langs\` to obtain a list of all supported languages that Kali can compile! (Your langauge is likely supported)`
                     }, {
                         name: "__Format__",
-                        value: `- You must follow a specific format when it comes to sending code for Kali to compile:\n 1. First you must specify what language you want to compile using \`${prefix}compile [lang]\`\n2. You must then move to the next line in the **same** message and type out your code in a **code block**.\n
+                        value: `You must follow a specific format when it comes to sending code for Kali to compile:\n 1. First you must specify what language you want to compile using \`${prefix}compile [lang]\`\n2. You must then move to the next line in the **same** message and type out your code in a **code block**.\n
                         3. Example:\n > ${prefix}compile python\n> \`\`\`py\n> print("Hello World!")\n> \`\`\``
                     }, {
                         name: "__Output__",
@@ -123,7 +125,7 @@ module.exports = {
                     .setFooter(`Miscellaneous help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
                     .addFields({
                         name: "__Support Kali__",
-                        value: `- \`${prefix}github\`: Get a link to Kali's Github!`
+                        value: `${bulletpoint} \`${prefix}github\`: Get a link to Kali's Github!`
                     });
                     message.channel.send(embed);
                     break;
@@ -142,19 +144,19 @@ module.exports = {
             .setDescription("The following commands identify help categories for which you can get more information on. If you're up for it, you might even find a command for a little **secret** :smirk:")
             .addFields({
                 name: '__Utilities__',
-                value: `- \`${prefix}help utils\`: Get help on server commands regarding server utilities**!**`,
+                value: `${bulletpoint} \`${prefix}help utils\`: Get help on server commands regarding server utilities**!**`,
             }, {
                 name: "__Moderation__",
-                value: `- \`${prefix}help mod\`: Moderation command**s** such as ban and kick!`,
+                value: `${bulletpoint} \`${prefix}help mod\`: Moderation command**s** such as ban and kick!`,
             }, {
                 name: '__Code Compiler__',
-                value: `- \`${prefix}help compile\`: Kali bot can compil**e** and run popular programming languages **in discord**! Find out how to use this powerful fun**c**tionality with this command.`,
+                value: `${bulletpoint} \`${prefix}help compile\`: Kali bot can compil**e** and run popular programming languages **in discord**! Find out how to use this powerful fun**c**tionality with this command.`,
             }, {
                 name: '__Chatbot__',
-                value: `- \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you can hold cove**r**sations!`,
+                value: `${bulletpoint} \`${prefix}help chatbot\`: Kali bot comes equipped with an intelligent AI with which you can hold cove**r**sations!`,
             }, {
                 name: '__Miscellaneous__',
-                value: `- \`${prefix}help misc\`: Commands which dont fit into the cat**e**gories lis**t**ed above.`
+                value: `${bulletpoint} \`${prefix}help misc\`: Commands which dont fit into the cat**e**gories lis**t**ed above.`
             });
             message.reply("Helping you now!");
             message.channel.send(embed);

@@ -1,6 +1,8 @@
 const commandBase = require("../command-base");
 const Discord = require('discord.js');
 const client = require("../../index");
+require('dotenv').config();
+const bulletpoint = process.env.BULLETPOINTEMOJI
 module.exports = {
     commands: ['roleinfo', 'ri'],
     minArgs: 1,
@@ -12,7 +14,7 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setTitle(`${role.name} Role`)
                 .setColor(role.color)
-                .setDescription(`**Name:** ${role.name}\n**Hex Color:** ${role.hexColor}\n**Role ID:** ${role.id}\n**Created:** ${role.createdAt}`);
+                .setDescription(`${bulletpoint} **Name:** ${role.name}\n${bulletpoint} **Hex Color:** ${role.hexColor}\n${bulletpoint} **Role ID:** ${role.id}\n${bulletpoint} **Created:** ${role.createdAt}`);
                 message.channel.send(embed);
             }
             else{

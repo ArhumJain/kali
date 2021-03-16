@@ -1,6 +1,8 @@
 const commandBase = require("../command-base");
 const Discord = require('discord.js');
 const client = require("../../index");
+require('dotenv').config();
+const bulletpoint = process.env.BULLETPOINTEMOJI
 module.exports = {
     commands: ['channelinfo', 'ci'],
     minArgs: 1,
@@ -20,7 +22,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setTitle(`${channel.name} Channel`)
             .setColor("#FF003E")
-            .setDescription(`**Name:** ${channelTag}\n**Type:** ${channel.type[0].toUpperCase() + channel.type.slice(1) + " Channel"}\n**Channel ID:** ${channel.id}\n**Created:** ${channel.createdAt}`);
+            .setDescription(`${bulletpoint} **Name:** ${channelTag}\n${bulletpoint} **Type:** ${channel.type[0].toUpperCase() + channel.type.slice(1) + " Channel"}\n${bulletpoint} **Channel ID:** ${channel.id}\n${bulletpoint} **Created:** ${channel.createdAt}`);
             if(channel.type != "category")
             {
                 embed.setFooter(`Category Name: ${channel.parent.name} • Category ID: ${channel.parentID}`)

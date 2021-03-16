@@ -1,6 +1,6 @@
 # Kali Discord Bot
-Added channel info command
-- Working on polishes
+Improved embeds and the userinfo command now display server roles as well
+- Bugfixing the compiler
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
@@ -11,8 +11,16 @@ Added channel info command
         TOKEN=1234567890
         MONGOPASS=123456
         PREFIX=!
+        BULLETPOINTEMOJI=<:bulletpoint:821446907871494154>
         ```
         - Or you can set up environment variables in the same way if your hosting the bot on a server (I use [Heroku](https://www.heroku.com/)). Otherwise, if your service doesnt support built in environment variables or you are hosting on a personal machine, you **MUST** set up `.env`.
+        - Note: BULLETPOINTEMOJI is an emoji for bullet points for embed formatting. It is a required environment variable and you have to provide the emoji in custom emoji format (I would make a separate server that contains the emoji and Kali bot so the bot can reference it.): 
+          ```
+          <:emoji_name:emoji_id>
+          ```
+          - In my case, I provided an diamond shaped emoji so embeds will display like this:
+            <img src='./assets/embedsample.png' alt="embed sample" style="width:497px;height:377px;"></img>
+          - You can find the same asset I used in the `assets` directory but you will have to upload it to a discord server yourself.
     - The bot uses MongoDB so you must create a MongoDB collection (with a user that uses password authentication) yourself and use the application string provided by MongoDB in `src/mongo.js`. Use this [video](https://www.youtube.com/watch?v=SyWdNBbzTIA&t) to find out how to set up a Mongo Data Base and get your connection string.
         - In `mongo.js` replace the string assigned to `mongoPath with your connection string
             ```

@@ -1,5 +1,7 @@
 const commandBase = require("../command-base");
 const Discord = require('discord.js');
+require('dotenv').config();
+const bulletpoint = process.env.BULLETPOINTEMOJI
 module.exports = {
     commands: ['serverinfo', 'si'],
     minArgs: 0,
@@ -21,16 +23,16 @@ module.exports = {
             .setThumbnail(guild.iconURL({dynamic : true}))
             .addFields({
                 name: "__Owner__",
-                value: `> **Server nickname:** ${guild.member(owner.user).displayName}\n> **Tag:** ${owner.user.tag}`,
+                value: `${bulletpoint} **Server nickname:** ${guild.member(owner.user).displayName}\n${bulletpoint} **Tag:** ${owner.user.tag}`,
             },{
                 name:"__Stats__",
-                value:`> **User count:** ${guild.memberCount}\n> **Channel counts:**\n> *Total:* ${totalChannelCount}\n> *Categories:* ${categoryChannelCount}\n> - Text: ${textChannelCount}\n> - Voice: ${voiceChannelCount}\n> - News: ${newsChannelCount}\n> - Store: ${storeChannelCount}\n> **Server created:** ${guild.createdAt}`
+                value:`${bulletpoint} **User count:** ${guild.memberCount}\n${bulletpoint} **Channel counts:**\n> - *Categories:* ${categoryChannelCount}\n> - *Total:* ${totalChannelCount}\n> - Text: ${textChannelCount}\n> - Voice: ${voiceChannelCount}\n> - News: ${newsChannelCount}\n> - Store: ${storeChannelCount}\n${bulletpoint} **Server created:** ${guild.createdAt}`
             }, {
                 name: "__Region__",
-                value: `> ${guild.region}`,
+                value: `${bulletpoint} ${guild.region}`,
             },{
-                name: "Invite",
-                value: `**Server invite link:** Not implemented yet`,
+                name: "__Invite__",
+                value: `${bulletpoint} **Server invite link:** Not implemented yet`,
             });
             message.channel.send(embed);
         });

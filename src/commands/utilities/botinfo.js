@@ -1,6 +1,8 @@
 const commandBase = require("../command-base");
 const client = require("../../index")
 const Discord = require('discord.js');
+require('dotenv').config();
+const bulletpoint = process.env.BULLETPOINTEMOJI
 // Standard botinfo command to retrieve information about Kali. Nothing much to see here....
 module.exports = {
     commands: ['botinfo', 'bi'],
@@ -14,13 +16,13 @@ module.exports = {
         .setDescription("Kali (kaah-lee) is a general purpose bot with boosted cognitive capabilities and advanced processing power. She is powered by a powerful substance christened Mulium which is formed by the combination of the 42nd element, Molybdenum, and the 69th element, Thulium. The metal was fabricated after years of experimentation by her **creator.** It holds the power to sustain 6.90 x 10^4 human lifetimes. Using this power, Kali can compile almost **any** programming language and hold **intellectual and empathetic** conversations!")
         .addFields({
             name: "__**Creator**__",
-            value: "Isukali#2787"
+            value: `${bulletpoint} Isukali#2787`
         }, {
             name: "__**Important Links**__",
-            value: "*Kali's Github Repository*: https://github.com/ArhumJain/kali\n*top.gg link:* Not on top.gg yet",
+            value: `${bulletpoint} *Kali's Github Repository*: https://github.com/ArhumJain/kali\n${bulletpoint} *top.gg link:* Not on top.gg yet`,
         }, {
             name: "__**Support server**__",
-            value: "*Server invite:* https://discord.gg/VRjQ2g2eV8",
+            value: `${bulletpoint} *Server invite:* https://discord.gg/VRjQ2g2eV8`,
         })
         message.channel.send(embed);
     }
