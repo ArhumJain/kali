@@ -144,7 +144,7 @@ module.exports = {
             .setDescription("The following commands identify help categories for which you can get more information on. If you're up for it, you might even find a command for a little **secret** :smirk:")
             .addFields({
                 name: '__Utilities__',
-                value: `${bulletpoint} \`${prefix}help utils\`: Get help on server commands regarding server utilities**!**`,
+                value: `${bulletpoint} \`${prefix}help utils\`: Get help on server commands regarding server utilities!`,
             }, {
                 name: "__Moderation__",
                 value: `${bulletpoint} \`${prefix}help mod\`: Moderation command**s** such as ban and kick!`,
