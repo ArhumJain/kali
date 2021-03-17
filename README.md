@@ -5,10 +5,12 @@ Improved embeds and the userinfo command now display server roles as well
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
 2. Copy discord bot secret key (token)
+3. Get the bot's ID (You might need to turn on developer mode on Discord for this)
 3. You need to create a `.env` (Mandatory or the bot will not work) file in `src`
     - It should be structured like so:
         ```env
         TOKEN=1234567890
+        BOTID=12345679087
         MONGOPASS=123456
         PREFIX=!
         BULLETPOINTEMOJI=<:bulletpoint:821446907871494154>

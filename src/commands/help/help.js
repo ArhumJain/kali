@@ -158,7 +158,6 @@ module.exports = {
                 name: '__Miscellaneous__',
                 value: `${bulletpoint} \`${prefix}help misc\`: Commands which dont fit into the cat**e**gories lis**t**ed above.`
             });
-            message.reply("Helping you now!");
             message.channel.send(embed);
         }
     },

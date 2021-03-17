@@ -4,6 +4,7 @@ const prefixSchema = require("../schemas/server-settings");
 require('dotenv').config();
 const globalPrefix = process.env.PREFIX;
 const guildPrefixes = {};
+const clientId = process.env.BOTID;
 const validatePermissions = (permissions) =>{
     const validPermissions = [
         'CREATE_INSTANT_INVITE',
@@ -77,7 +78,18 @@ module.exports = (client, commandOptions) => {
         const {member, content, guild} = message;
         const prefix = guildPrefixes[guild.id] || globalPrefix;       
         for (const alias of commands){
-            if(content.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`)){
+            let formatContent = content.split(" ");
+            // This allows the user to have a space in front of the primary command for better readability. somelongprefixherehelp vs somelongprefixhere help would work the same.
+            if ((formatContent[0] === prefix || formatContent[0] === `<@!${clientId}>`) && formatContent[1] === alias){
+                formatContent[0] = formatContent[0] + formatContent[1];
+                const index = formatContent.indexOf(alias);
+                formatContent.splice(index, 1);
+                formatContent = formatContent.join(" ");
+            }
+            else{
+                formatContent = content;
+            }
+            if(formatContent.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`) || formatContent.toLowerCase().startsWith(`<@!${clientId}>${alias.toLowerCase()}`)){
                 // Run command
                 // Makes sure user has required permissions
                 for(const permission of permissions){
@@ -94,7 +106,8 @@ module.exports = (client, commandOptions) => {
                     }
                 }
                 // Split on spaces to parse multiple arguments 
-                const arguments = content.split(/[ ]+/);
+                const arguments = formatContent.split(/[ ]+/);
+                console.log(arguments);
                 // Rmove the identifier command at first index
                 arguments.shift();
                 // Makse sure correct number of arguments

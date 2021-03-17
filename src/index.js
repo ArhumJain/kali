@@ -6,7 +6,7 @@ const mongo = require('./mongo');
 require('dotenv').config();
 client.on('ready', () =>{
     console.log(`Client ready! Logged in as ${client.user.tag}!`);
-    client.user.setActivity("your every move...", {type:"WATCHING"});
+    client.user.setActivity("@Kali", {type:"WATCHING"});
     const logsBaseFile = 'logs-base.js';
     const commandBaseFile = 'command-base.js';
     const compilerBaseFile = 'compiler-base.js';
