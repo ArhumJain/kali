@@ -113,7 +113,7 @@ module.exports = {
                         3. Example:\n > ${prefix}compile python\n> \`\`\`py\n> print("Hello World!")\n> \`\`\``
                     }, {
                         name: "__Output__",
-                        value: `The compiler will give you an output with a status code of \`0\`, indicating success, or \`1-2\`, \`126-165\`, or \`255\`.\n**Note:** Compiler output is limited to 1000 characters so attempting to output the numbers from 1-1000 will only go up to about 277. There is also a strict timeout restriction of 3 seconds. If your code takes longer to compile, the compiler will exit!`,
+                        value: `The compiler will give you an output with a status code of \`0\`, indicating success, or \`1-2\`, \`126-165\`, or \`255\`.\n**Note:** Compiler output is limited to 1000 characters so attempting to output the numbers from 1-1000 will only go up to about 277. There is also a strict timeout restriction of **45** seconds. If your code takes longer to compile, the compiler **will exit!**`,
                     })
                     message.channel.send(embed);
                     break;

@@ -10,6 +10,7 @@ module.exports = (code, compiler) => {
         // Wandbox API requires "application/json" content type and also setting json header to postData
         const options = {
             json: postData,
+            timeout: 2000,
             headers: {
                 "Content-Type": "application/json",
             }
@@ -17,9 +18,11 @@ module.exports = (code, compiler) => {
         // Make the final POST to the WandboxAPI
         request.post('https://wandbox.org/api/compile.json', options, (err, res, body) => {
             if (err) {
+                // console.error(err);
                 output(err);
                 return err;
             }
+            console.log(body);
             output(body);
         })
     }

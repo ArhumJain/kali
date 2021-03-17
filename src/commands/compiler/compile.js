@@ -1,6 +1,7 @@
 const commandBase = require('../command-base');
 const puppeteer = require('puppeteer');
 const Discord = require('discord.js');
+const client = require('../../index');
 const prefix = commandBase.getGuildPrefix();
 // Import the compiler base. We have exported a function which returns a Promise in the command-base.js file and this can be called using compiler() with the required args
 const compiler = require('./compiler-base');
@@ -78,8 +79,20 @@ module.exports = {
             {
                 const compilerOutputEmbed = new Discord.MessageEmbed(); // Initialize embed object will be use to send the results of the compile to the user
                 const selectedLanguage = supportedLangs[language];
+                message.react('821496104310931466');
                 // Call the compiler base and pass in the users' code and the selected language (compiler, e.g. cypthon-head)
                 compiler(codeSentByUser[0], selectedLanguage).then((compilerOutput) => {
+                    console.log(compilerOutput);
+                    if(compilerOutput.code == "ESOCKETTIMEDOUT"){
+                        message.channel.send(`<@${message.author.id}>`);
+                        compilerOutputEmbed.setTitle("Compile Timeout")
+                        .setColor("#fce303")
+                        .setDescription(`Your [code](${message.url}) took too long to compile! Code submitted to Kali cannot exceed more than **45** seconds to compile.`)
+                        message.reactions.removeAll();
+                        message.react("🟡");
+                        message.channel.send(compilerOutputEmbed);
+                        return;
+                    }
                     // Extract fields from compilerOutput
                     const statusCode = compilerOutput.status;
                     let finalOutput = (compilerOutput.program_error !== undefined) ? compilerOutput.program_error : compilerOutput.program_output; // Check if the compilerOutput isn't false. It would be false if another compile was currently in progress (Refer to the compile() function)
@@ -89,6 +102,7 @@ module.exports = {
                         .setTitle("Compile failed!")
                         .setFooter(`Kali Compiler: Use \`${prefix}compile slang\` for list of supported languages`)
                         .setColor("#ff7e70")
+                        .setDescription(`[Your Code](${message.url})`)
                         .addFields({
                             name: "__Output__",
                             value: "```" + "\n" + finalOutput + "\n" + "```",
@@ -96,10 +110,16 @@ module.exports = {
                             name: "__Status__",
                             value: `Exited with status code **${statusCode}**`
                         });
+                        message.reactions.removeAll();
+                        message.react("🔴");
                         message.channel.send(compilerOutputEmbed);
                     }
                     else{
-                        if(finalOutput.length > 1000){ // Discord API prevents you from sending over 1024 characters in an embed. 1000 characters has been chosen as a padding in this scenario
+                        if(finalOutput == undefined) // This means the code sent didn't actually output anything
+                        {
+                            finalOutput = "";
+                        }
+                        else if(finalOutput.length > 1000){ // Discord API prevents you from sending over 1024 characters in an embed. 1000 characters has been chosen as a padding in this scenario
                             console.log("Compiler output is greater 1024 characters");
                             finalOutput = finalOutput.substring(0,1000);
                         }
@@ -107,6 +127,7 @@ module.exports = {
                         .setTitle("Compile success!")
                         .setFooter(`Kali Compiler: Use \`${prefix}help compile langs\` for list of supported languages`)
                         .setColor("#70ff96")
+                        .setDescription(`[Your Code](${message.url})`)
                         .addFields({
                             name: "__Output__",
                             value: "```" + "\n" + finalOutput + "\n" + "```",
@@ -114,6 +135,8 @@ module.exports = {
                             name: "__Status__",
                             value: "Exited with status code 0!"
                         });
+                        message.reactions.removeAll();
+                        message.react("🟢");
                         message.channel.send(compilerOutputEmbed);   
                     }
                 });   
