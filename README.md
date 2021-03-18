@@ -1,17 +1,20 @@
 # Kali Discord Bot
-Improved embeds and the userinfo command now display server roles as well
-- Bugfixing the compiler
+Added the stock command to retrieve data about a specific stock
+- More Coming Soon!
 ---
 ## Usage
 1. Create a discord bot application at the [discord developer portal](https://discord.com/developers/applications)
 2. Copy discord bot secret key (token)
 3. Get the bot's ID (You might need to turn on developer mode on Discord for this)
-3. You need to create a `.env` (Mandatory or the bot will not work) file in `src`
+4. Get yourself a free API Key ID and Secret Key for the [Alpaca Trade API](https://alpaca.markets/). You can use [this](https://alpaca.markets/docs/get-started-with-alpaca/tutorial-videos/) for a step-by-step tutorial on getting started with Alpaca
+5. You need to create a `.env` (Mandatory or the bot will not work) file in `src`
     - It should be structured like so:
         ```env
         TOKEN=1234567890
         BOTID=12345679087
         MONGOPASS=123456
+        APCA_API_KEY_ID=AKFZXJH121U18SHHDRFO
+        APCA_API_SECRET_KEY=pnq4YHlpMF3LhfLyOvmdfLmlz6BnASrTPQIASeiU
         PREFIX=!
         BULLETPOINTEMOJI=<:bulletpoint:821446907871494154>
         ```
@@ -43,4 +46,7 @@ Improved embeds and the userinfo command now display server roles as well
       ```
     - ```
       npm install request
+      ```
+    - ```
+      npm install @alpacahq/alpaca-trade-api
       ```

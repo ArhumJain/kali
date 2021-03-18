@@ -33,6 +33,15 @@ module.exports = {
                 // by the bot to set up an account. This works fine. Sry for long comment, kinda new to documenting my code well and such and I'm still writing a longer comment bruh.
                 botResponseToSend = listOfBotResponses[listOfBotResponses.length - 2];
             }
+            if (botResponseToSend.toLowerCase().includes('kuki')){
+                botResponseToSend = botResponseToSend.replaceAll("Kuki", "Kali");
+                botResponseToSend = botResponseToSend.replaceAll("kuki", "Kali");
+                if(botResponseToSend.includes('https://www.kali.ai/'))
+                {
+                    console.log("DETECTED!");
+                    botResponseToSend = botResponseToSend.replaceAll("[REDACTED]");
+                }
+            }
             message.channel.send(botResponseToSend);
         }
         else{

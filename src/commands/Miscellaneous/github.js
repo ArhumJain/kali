@@ -1,7 +1,6 @@
 const commandBase = require("../command-base");
 const client = require("../../index")
 const Discord = require('discord.js');
-// Standard botinfo command to retrieve information about Kali. Nothing much to see here....
 module.exports = {
     commands: ['github', 'gh'],
     minArgs: 0,

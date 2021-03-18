@@ -76,7 +76,8 @@ module.exports = (client, commandOptions) => {
     // Listen for messages
     client.on('message', message =>{
         const {member, content, guild} = message;
-        const prefix = guildPrefixes[guild.id] || globalPrefix;       
+        const prefix = guildPrefixes[guild.id] || globalPrefix;
+    
         for (const alias of commands){
             let formatContent = content.split(" ");
             // This allows the user to have a space in front of the primary command for better readability. somelongprefixherehelp vs somelongprefixhere help would work the same.
@@ -107,13 +108,19 @@ module.exports = (client, commandOptions) => {
                 }
                 // Split on spaces to parse multiple arguments 
                 const arguments = formatContent.split(/[ ]+/);
-                console.log(arguments);
+                // Check if the bot is being tagged as the prefix using this variable
+                const isPrefixBotTag = arguments[0];
                 // Rmove the identifier command at first index
                 arguments.shift();
                 // Makse sure correct number of arguments
-                if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs))
+                if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs) &&  !isPrefixBotTag)
                 {
                     message.reply(`Incorrect syntax! Use \`${prefix}${alias} ${expectedArgs}\``)
+                    return;
+                }
+                if(isPrefixBotTag == `<@!${clientId}>` && arguments.length == 0)
+                {
+                    message.reply(`you called? You can get more help using \`${prefix}help\``);
                     return;
                 }
                 // Handle the custom command code

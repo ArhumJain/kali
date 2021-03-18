@@ -19,7 +19,6 @@ module.exports = {
             {
                 // Category help for Utilities
                 case 'utils':
-                    message.channel.send("Utilities help");
                     embed.setTitle("Utlitiies Help")
                     .setColor(color)
                     .setFooter(`Help requested by ${message.author.tag}`, message.author.avatarURL({dynamic : true}))
@@ -76,7 +75,6 @@ module.exports = {
                     break;
                 // Category help for code compiler
                 case 'compile':
-                    message.channel.send("Compiler help");
                     if(arguments[1] == "langs")
                     {
                         // Help embed for listing out all languages supported by the compiler (There are 37 in total)
