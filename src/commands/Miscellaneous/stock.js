@@ -3,8 +3,6 @@ const client = require("../../index");
 const Discord = require('discord.js');
 const Alpaca = require('@alpacahq/alpaca-trade-api');
 const alpaca = new Alpaca({
-    keyId: 'PKRXOSZAQJU93ZLZO5A4',
-    secretKey: 'yr7EqF4PYZEJWCLij2nezFHHDyj3CDRC1158dmD7',
     paper: true,
     usePolygon: false
 })
