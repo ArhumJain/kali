@@ -124,6 +124,9 @@ module.exports = {
                     .addFields({
                         name: "__Support Kali__",
                         value: `${bulletpoint} \`${prefix}github\`: Get a link to Kali's Github!`
+                    },{
+                        name: "__Other__",
+                        value: `${bulletpoint} \`${prefix}stock [TICKER]\`: Get the current value, company name, and exchange of a stock symbol`
                     });
                     message.channel.send(embed);
                     break;
